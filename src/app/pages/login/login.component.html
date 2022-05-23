@@ -1,0 +1,44 @@
+<div class=container>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class ="text-center">
+                    <h1>Login</h1>
+                    <h6>Please enter email & password</h6>
+                </div>
+                <form [formGroup]="exform" (ngSubmit) = "onSubmit()">
+
+                     <div class="form-group">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                          
+                          [ngClass]="{ 'is-invalid': formControls.email.errors && formControls.email.touched} " />
+                          <div *ngIf="  formControls.email.errors && formControls.email.touched" class="invalid-feedback">
+                          <div *ngIf="formControls.email.errors.required ">Email is required</div>
+
+                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1"
+                       
+                          [ngClass]="{ 'is-invalid': formControls.password.errors && formControls.password.touched}" />
+                          <div *ngIf="formControls.password.errors && formControls.password.touched" class="invalid-feedback">
+                          <div *ngIf="formControls.password.errors.required">Password is required</div>
+                        </div>
+                        </div>
+
+                        <ngx-recaptcha2 #captchaElem
+                        [siteKey]="siteKey"
+                        formControlName="recaptcha"></ngx-recaptcha2>
+                       
+                        <button class = "btn btn-success" type ="submit" [disabled]="!exform.valid">Submit</button><p></p>
+                       
+                </form>
+
+                <a style="color: #fff; margin-top:10px" routerLink="/signup"> New user? Click to signup!!</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class = "navbar-nav">
+        <li class = "nav-item">
+            <a routerLink="/customer/events" routerLinkActive="active" class="nav-link" >Event List</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink="/customer/data" routerLinkActive="active" class="nav-link" >Personal Data</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink="/customer/tickets" routerLinkActive="active" class="nav-link" >Tickets</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink="/customer/favorites" routerLinkActive="active" class="nav-link" >Favorites</a>
+        </li>
+    </ul>
+  </nav>
+  
+  
+<div class="col-md-6 offset-md-3">
+    <h3> Update Customer </h3>
+    <form [formGroup]="exform" (ngSubmit) = "onSubmit()">
+    
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="name" class="form-control"
+            [ngClass]="{ 'is-invalid':    formControls.name.errors }" />
+            <div *ngIf="  formControls.name.errors" class="invalid-feedback">
+            <div *ngIf="formControls.name.errors.required">Name is required</div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid':  formControls.email.errors }" />
+            <div *ngIf="formControls.email.errors" class="invalid-feedback">
+            <div *ngIf="formControls.email.errors.required">Email is required</div>
+            <div *ngIf="formControls.email.errors.email">Must be a valid email address!</div>
+            </div>
+            </div>
+    
+            <div class="form-group">
+                <label>Ron</label>
+                <input type="text" formControlName="ron" class="form-control"
+                [ngClass]="{ 'is-invalid': formControls.ron.errors }" />
+                <div *ngIf=" formControls.ron.errors" class="invalid-feedback">
+                <div *ngIf="formControls.ron.errors.required">Ron is required</div>
+                </div>
+                </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text" formControlName="phone" class="form-control"
+            [ngClass]="{ 'is-invalid': formControls.phone.errors }" />
+            <div *ngIf="formControls.phone.errors" class="invalid-feedback">
+            <div *ngIf="formControls.phone.errors.required">Phone is required</div>
+            <div *ngIf="formControls.phone.errors.pattern">Phone must 10 digits.</div>
+            </div>
+            </div>
+        <br>
+        <button class = "btn btn-success" type ="submit" [disabled]="!exform.valid">Submit</button><p></p>
+
+
+    
+    </form>
+    </div> 
